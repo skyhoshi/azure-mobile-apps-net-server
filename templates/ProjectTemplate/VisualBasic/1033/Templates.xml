@@ -20,7 +20,7 @@
 
     <BaseTemplates>
         <BaseTemplate ID="Microsoft.WAP.CSharp.MobileApp.v1.0"
-                      VSTemplatePath="MobileServicesApplicationv1.0\MobileServicesApplication.cshtml.vstemplate">
+                      VSTemplatePath="MobileServicesApplicationv1.0\MobileServicesApplication.vbhtml.vstemplate">
             <ApplyRules>
                 <RunRule RuleID="global.WebForms" Option="WebForms" />
                 <RunRule RuleID="global.WebApiWithWebForms" Option="WebForms" />
