@@ -1,6 +1,6 @@
-# Azure Mobile Apps - .NET Server SDK
+# Azure Mobile Apps .NET Server SDK
 
-This repo contains the .NET backend for **Azure Mobile Apps**. The Mobile Apps .NET backend is a peer to the Node.js backend, giving users a choice in backend platform.
+This repo contains the .NET backend for **Azure Mobile Apps**. The Mobile Apps .NET backend is a peer to the [Node.js backend](https://github.com/Azure/azure-mobile-apps-node), giving users a choice in backend platform.
 
 ## Download Source Code
 
@@ -33,8 +33,10 @@ To run the sample project:
 
 ## Useful Resources
 
-* Tutorials and product overview are available at [Microsoft Azure Mobile Services Developer Center](https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop-preview/).
-* Our product team actively monitors the [Mobile Services Developer Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azuremobile) to assist you with any troubles.
+* Tutorials and product overview are available at [Microsoft Azure Mobile Services Developer Center](https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/).
+* See the [Mobile Apps .NET server SDK topic](https://azure.microsoft.com/documentation/articles/app-service-mobile-dotnet-backend-how-to-use-server-sdk/) for details on how to work with this SDK.
+* The [wiki for this repo](./wiki) is where we document issues and other interesting behaviors of the Mobile Apps .NET server SDK. 
+* Our product team actively monitors the [Mobile Services Developer Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azuremobile) and [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-mobile-app) to assist you with any troubles.
 
 ## Contribute Code or Provide Feedback
 
