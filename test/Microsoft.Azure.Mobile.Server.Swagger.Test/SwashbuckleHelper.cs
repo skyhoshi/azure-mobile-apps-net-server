@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
 {
     public static class SwashbuckleHelper
     {
-        public static TestServer CreateSwaggerServer(Action<SwaggerDocsConfig> docsAction, Action<SwaggerUiConfig> uiAction)
+        public static TestServer CreateSwaggerServer(HttpConfiguration config, Action<SwaggerDocsConfig> docsAction, Action<SwaggerUiConfig> uiAction)
         {
             return TestServer.Create(app =>
             {
@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
                     };
                 }
 
-                HttpConfiguration config = new HttpConfiguration();
                 config.Services.Replace(typeof(IApiExplorer), new MobileAppApiExplorer(config));
 
                 new MobileAppConfiguration()

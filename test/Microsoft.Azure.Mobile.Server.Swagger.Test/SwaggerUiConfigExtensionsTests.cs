@@ -4,7 +4,9 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.Owin.Testing;
 using Swashbuckle.Application;
 using Xunit;
@@ -17,9 +19,10 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
         public async Task SwaggerUiDocs()
         {
             // Arrange
-            TestServer server = SwashbuckleHelper.CreateSwaggerServer(null, c =>
+            HttpConfiguration config = new HttpConfiguration();
+            TestServer server = SwashbuckleHelper.CreateSwaggerServer(config, null, c =>
             {
-                c.MobileAppUi();
+                c.MobileAppUi(config);
             });
 
             string o2cExpected = GetResourceString("Microsoft.Azure.Mobile.Server.Swagger.o2c.html");
@@ -35,6 +38,7 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
             // Assert
             Assert.Equal(o2cExpected, o2c);
             Assert.Equal(oauthExpected, oauth);
+            Assert.Contains(typeof(SwaggerUiSecurityFilter), config.MessageHandlers.Select(h => h.GetType()));
         }
 
         [SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification = "This code is resilient to this scenario")]

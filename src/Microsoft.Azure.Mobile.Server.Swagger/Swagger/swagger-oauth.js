@@ -6,7 +6,7 @@
 // 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
 
-// This file is a modified version of the file at: https://github.com/domaindrivendev/Swashbuckle/blob/07f48b3c444be321bf58768353fbb37ca44fbe8a/Swashbuckle.Core/SwaggerUi/CustomAssets/swagger-oauth.js
+// This file is a modified version of the file at: https://github.com/domaindrivendev/Swashbuckle/blob/953f9803bdf4a5051dd4ad90f8a6bc0ad8b6af3b/Swashbuckle.Core/SwaggerUi/CustomAssets/swagger-oauth.js
 // Additions and changes to this file are surrounded by '<AzureMobile>' and '</AzureMobile>' comments.
 
 var appName;
@@ -14,10 +14,16 @@ var popupMask;
 var popupDialog;
 var clientId;
 var realm;
-var oauth2KeyName;
 var redirect_uri;
 var clientSecret;
 var scopeSeparator;
+var additionalQueryStringParams;
+
+// <AzureMobile>
+// App Service Authentication does not pass back the state parameter, 
+// so track it here as previous versions of swagger-ui did.
+var oauth2KeyName;
+// </AzureMobile>
 
 function handleLogin() {
     var scopes = [];
@@ -29,7 +35,6 @@ function handleLogin() {
         for (key in defs) {
             var auth = defs[key];
             if (auth.type === 'oauth2' && auth.scopes) {
-                oauth2KeyName = key;
                 var scope;
                 if (Array.isArray(auth.scopes)) {
                     // 1.2 support
@@ -41,7 +46,7 @@ function handleLogin() {
                 else {
                     // 2.0 support
                     for (scope in auth.scopes) {
-                        scopes.push({ scope: scope, description: auth.scopes[scope] });
+                        scopes.push({ scope: scope, description: auth.scopes[scope], OAuthSchemeKey: key });
                     }
                 }
             }
@@ -71,12 +76,16 @@ function handleLogin() {
         '</div>'].join(''));
     $(document.body).append(popupDialog);
 
+    //TODO: only display applicable scopes (will need to pass them into handleLogin)
     popup = popupDialog.find('ul.api-popup-scopes').empty();
     for (i = 0; i < scopes.length; i++) {
         scope = scopes[i];
-        str = '<li><input type="checkbox" id="scope_' + i + '" scope="' + scope.scope + '"/>' + '<label for="scope_' + i + '">' + scope.scope;
+        str = '<li><input type="checkbox" id="scope_' + i + '" scope="' + scope.scope + '"' + '" oauthtype="' + scope.OAuthSchemeKey + '"/>' + '<label for="scope_' + i + '">' + scope.scope;
         if (scope.description) {
-            str += '<br/><span class="api-scope-desc">' + scope.description + '</span>';
+            if ($.map(auths, function (n, i) { return i; }).length > 1) //if we have more than one scheme, display schemes
+                str += '<br/><span class="api-scope-desc">' + scope.description + ' (' + scope.OAuthSchemeKey + ')' + '</span>';
+            else
+                str += '<br/><span class="api-scope-desc">' + scope.description + '</span>';
         }
         str += '</label></li>';
         popup.append(str);
@@ -114,9 +123,25 @@ function handleLogin() {
         var defaultRedirectUrl = host.protocol + '//' + host.host + pathname + '/o2c-html';
         var redirectUrl = window.oAuthRedirectUrl || defaultRedirectUrl;
         var url = null;
+        var scopes = []
+        var o = popup.find('input:checked');
+        var OAuthSchemeKeys = [];
+        var state;
+        for (k = 0; k < o.length; k++) {
+            var scope = $(o[k]).attr('scope');
+            if (scopes.indexOf(scope) === -1)
+                scopes.push(scope);
+            var OAuthSchemeKey = $(o[k]).attr('oauthtype');
+            if (OAuthSchemeKeys.indexOf(OAuthSchemeKey) === -1)
+                OAuthSchemeKeys.push(OAuthSchemeKey);
+        }
+
+        //TODO: merge not replace if scheme is different from any existing 
+        //(needs to be aware of schemes to do so correctly)
+        window.enabledScopes = scopes;
 
         for (var key in authSchemes) {
-            if (authSchemes.hasOwnProperty(key)) {
+            if (authSchemes.hasOwnProperty(key) && OAuthSchemeKeys.indexOf(key) != -1) { //only look at keys that match this scope.
                 var flow = authSchemes[key].flow;
 
                 if (authSchemes[key].type === 'oauth2' && flow && (flow === 'implicit' || flow === 'accessCode')) {
@@ -124,6 +149,13 @@ function handleLogin() {
                     url = dets.authorizationUrl + '?response_type=' + (flow === 'implicit' ? 'token' : 'code');
                     window.swaggerUi.tokenName = dets.tokenName || 'access_token';
                     window.swaggerUi.tokenUrl = (flow === 'accessCode' ? dets.tokenUrl : null);
+                    state = key;
+                }
+                else if (authSchemes[key].type === 'oauth2' && flow && (flow === 'application')) {
+                    var dets = authSchemes[key];
+                    window.swaggerUi.tokenName = dets.tokenName || 'access_token';
+                    clientCredentialsFlow(scopes, dets.tokenUrl, key);
+                    return;
                 }
                 else if (authSchemes[key].grantTypes) {
                     // 1.2 support
@@ -145,25 +177,12 @@ function handleLogin() {
                 }
             }
         }
-        var scopes = []
-        var o = $('.api-popup-scopes').find('input:checked');
-
-        for (k = 0; k < o.length; k++) {
-            var scope = $(o[k]).attr('scope');
-
-            if (scopes.indexOf(scope) === -1)
-                scopes.push(scope);
-        }
-
-        // Implicit auth recommends a state parameter.
-        var state = Math.random();
-
-        window.enabledScopes = scopes;
 
         redirect_uri = redirectUrl;
-
         // <AzureMobile>
         /*
+        url += '&redirect_uri=' + encodeURIComponent(redirectUrl);
+        
         url += '&realm=' + encodeURIComponent(realm);
         url += '&client_id=' + encodeURIComponent(clientId);
         url += '&scope=' + encodeURIComponent(scopes.join(scopeSeparator));
@@ -171,6 +190,7 @@ function handleLogin() {
         */
         url += '&post_login_redirect_url=' + encodeURIComponent(redirectUrl);
         url += '&session_mode=token';
+        oauth2KeyName = state;
         // </AzureMobile>
 
         window.open(url);
@@ -180,6 +200,7 @@ function handleLogin() {
     popupDialog.show();
     return;
 }
+
 
 function handleLogout() {
     for (key in window.swaggerUi.api.clientAuthorizations.authz) {
@@ -202,9 +223,10 @@ function initOAuth(opts) {
     popupMask = (o.popupMask || $('#api-common-mask'));
     popupDialog = (o.popupDialog || $('.api-popup-dialog'));
     clientId = (o.clientId || errors.push('missing client id'));
-    clientSecret = (o.clientSecret || errors.push('missing client secret'));
+    clientSecret = (o.clientSecret || null);
     realm = (o.realm || errors.push('missing realm'));
     scopeSeparator = (o.scopeSeparator || ' ');
+    additionalQueryStringParams = (o.additionalQueryStringParams || {});
 
     if (errors.length > 0) {
         log('auth unable initialize oauth: ' + errors);
@@ -223,29 +245,56 @@ function initOAuth(opts) {
     });
 }
 
-window.processOAuthCode = function processOAuthCode(data) {
+function clientCredentialsFlow(scopes, tokenUrl, OAuthSchemeKey) {
     var params = {
         'client_id': clientId,
         'client_secret': clientSecret,
+        'scope': scopes.join(' '),
+        'grant_type': 'client_credentials'
+    }
+    $.ajax(
+    {
+        url: tokenUrl,
+        type: "POST",
+        data: params,
+        success: function (data, textStatus, jqXHR) {
+            onOAuthComplete(data, OAuthSchemeKey);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            onOAuthComplete("");
+        }
+    });
+
+}
+
+window.processOAuthCode = function processOAuthCode(data) {
+    var OAuthSchemeKey = data.state;
+    var params = {
+        'client_id': clientId,
         'code': data.code,
         'grant_type': 'authorization_code',
         'redirect_uri': redirect_uri
+    };
+
+    if (clientSecret) {
+        params.client_secret = clientSecret;
     }
+
     $.ajax(
     {
         url: window.swaggerUi.tokenUrl,
         type: "POST",
         data: params,
         success: function (data, textStatus, jqXHR) {
-            onOAuthComplete(data);
+            onOAuthComplete(data, OAuthSchemeKey);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             onOAuthComplete("");
         }
     });
-}
+};
 
-window.onOAuthComplete = function onOAuthComplete(token) {
+window.onOAuthComplete = function onOAuthComplete(token, OAuthSchemeKey) {
     if (token) {
         if (token.error) {
             var checkbox = $('input[type=checkbox],.secured')
@@ -256,6 +305,9 @@ window.onOAuthComplete = function onOAuthComplete(token) {
         }
         else {
             var b = token[window.swaggerUi.tokenName];
+            if (!OAuthSchemeKey) {
+                OAuthSchemeKey = token.state;
+            }
             if (b) {
                 // if all roles are satisfied
                 var o = null;
@@ -302,4 +354,4 @@ window.onOAuthComplete = function onOAuthComplete(token) {
             }
         }
     }
-}
+};
