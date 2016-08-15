@@ -22,10 +22,20 @@ namespace Microsoft.Azure.Mobile.Server
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            IHttpRouteData routeData = this.configuration.Routes.GetRouteData(request);
+            bool isSwaggerUi = routeData?.Route?.Handler?.GetType() == typeof(SwaggerUiHandler);
+            string userAgent = request.Headers.UserAgent.ToString();
+
+            if (isSwaggerUi && (userAgent.Contains("MSIE") || userAgent.Contains("Trident")))
+            {
+                HttpResponseMessage notSupportedResponse = new HttpResponseMessage();
+                notSupportedResponse.Content = new StringContent("Internet Explorer is not supported for viewing swagger-ui.");
+                return notSupportedResponse;
+            }
+
             HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
 
-            IHttpRouteData routeData = this.configuration.Routes.GetRouteData(request);
-            if (routeData?.Route?.Handler?.GetType() == typeof(SwaggerUiHandler))
+            if (isSwaggerUi)
             {
                 response.Headers.Add("Content-Security-Policy", "connect-src 'self' online.swagger.io");
             }
