@@ -84,9 +84,6 @@
     <Compile Include="SwaggerUiSecurityFilter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Swagger\swagger-oauth.js" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="Microsoft.Azure.Mobile.Server.Swagger.nuspec" />
     <None Include="packages.config" />
@@ -104,6 +101,12 @@
     <CodeAnalysisDictionary Include="..\..\CustomDictionary.xml">
       <Link>CustomDictionary.xml</Link>
     </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Swagger\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Swagger\swagger-ui.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
