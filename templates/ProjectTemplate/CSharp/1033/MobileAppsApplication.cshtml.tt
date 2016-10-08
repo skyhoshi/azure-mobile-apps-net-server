@@ -27,7 +27,7 @@
             <CustomParameter Name="$safecontextclassname$" Value="MobileServiceContext" />
             <CustomParameter Name="$safeinitializerclassname$" Value="MobileServiceInitializer" />
         </CustomParameters>
-        <Project File="MobileServicesApplication.csproj" ReplaceParameters="true">
+        <Project File="MobileAppsApplication.csproj" ReplaceParameters="true">
             <Folder Name="Properties" TargetFolderName="Properties">
                 <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
             </Folder>
