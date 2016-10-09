@@ -84,4 +84,4 @@ foreach(var nugetPackage in nugetPackages)
         </packages>
     </WizardData>
 </VSTemplate>
-<#@ include file="..\..\..\..\FindDependentNugets.tt" #>
+<#@ include file="..\..\..\FindDependentNugets.tt" #>
