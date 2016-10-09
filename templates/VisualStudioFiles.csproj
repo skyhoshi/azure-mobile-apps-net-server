@@ -89,9 +89,9 @@
     <Content Include="ProjectTemplate\CSharp\1033\Templates.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ProjectTemplate\CSharp\1033\MobileServicesApplication.cshtml.tt">
+    <None Include="ProjectTemplate\CSharp\1033\MobileAppsApplication.cshtml.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileServicesApplication.cshtml.vstemplate </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileAppsApplication.cshtml.vstemplate </AdditionalArgs>
     </None>
     <Content Include="ProjectTemplate\VisualBasic\1033\DataObjects\TodoItem.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -126,17 +126,17 @@
     <Content Include="ProjectTemplate\VisualBasic\1033\My Project\Settings.Designer.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ProjectTemplate\CSharp\1033\MobileServicesApplication.tt">
+    <None Include="ProjectTemplate\CSharp\1033\MobileAppsApplication.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileServicesApplication.csproj </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileAppsApplication.csproj </AdditionalArgs>
     </None>
-    <None Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplication.tt">
+    <None Include="ProjectTemplate\VisualBasic\1033\MobileAppsApplication.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileServicesApplication.vbproj </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileAppsApplication.vbproj </AdditionalArgs>
     </None>
-    <None Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplication.vbhtml.tt">
+    <None Include="ProjectTemplate\VisualBasic\1033\MobileAppsApplication.vbhtml.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileServicesApplication.vbhtml.vstemplate </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileAppsApplication.vbhtml.vstemplate </AdditionalArgs>
     </None>
   </ItemGroup>
   <ItemGroup>
