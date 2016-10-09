@@ -53,31 +53,31 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\App_Start\Startup.MobileApp.cs">
+    <Content Include="ProjectTemplate\CSharp\1033\App_Start\Startup.MobileApp.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Properties\AssemblyInfo.cs">
+    <Content Include="ProjectTemplate\CSharp\1033\Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Controllers\TodoItemController.cs">
+    <Content Include="ProjectTemplate\CSharp\1033\Controllers\TodoItemController.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\DataObjects\TodoItem.cs">
+    <Content Include="ProjectTemplate\CSharp\1033\DataObjects\TodoItem.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Models\%24safecontextclassname%24.cs">
+    <Content Include="ProjectTemplate\CSharp\1033\Models\%24safecontextclassname%24.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\Models\%24safecontextclassname%24.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\Models\%24safecontextclassname%24.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\Controllers\ValuesController.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\Controllers\ValuesController.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Controllers\ValuesController.cs">
+    <Content Include="ProjectTemplate\CSharp\1033\Controllers\ValuesController.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Startup.cs">
+    <Content Include="ProjectTemplate\CSharp\1033\Startup.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,14 +89,14 @@
     <Content Include="ProjectTemplate\CSharp\1033\Templates.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\MobileServicesApplication.cshtml.tt">
+    <None Include="ProjectTemplate\CSharp\1033\MobileAppsApplication.cshtml.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\MobileServicesApplication.cshtml.vstemplate </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileAppsApplication.cshtml.vstemplate </AdditionalArgs>
     </None>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\DataObjects\TodoItem.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\DataObjects\TodoItem.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\Startup.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\Startup.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ProjectTemplate\VisualBasic\1033\Templates.xml">
@@ -105,42 +105,42 @@
     <Content Include="ProjectTemplate\VisualBasic\1033\VBProject.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\App_Start\Startup.MobileApp.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\App_Start\Startup.MobileApp.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\Controllers\TodoItemController.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\Controllers\TodoItemController.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\My Project\Application.Designer.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\My Project\Application.Designer.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\My Project\Application.myapp">
+    <Content Include="ProjectTemplate\VisualBasic\1033\My Project\Application.myapp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\My Project\AssemblyInfo.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\My Project\AssemblyInfo.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\My Project\Resources.Designer.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\My Project\Resources.Designer.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\My Project\Settings.Designer.vb">
+    <Content Include="ProjectTemplate\VisualBasic\1033\My Project\Settings.Designer.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\MobileServicesApplication.tt">
+    <None Include="ProjectTemplate\CSharp\1033\MobileAppsApplication.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\MobileServicesApplication.csproj </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\CSharp\1033\MobileAppsApplication.csproj </AdditionalArgs>
     </None>
-    <None Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\MobileServicesApplication.tt">
+    <None Include="ProjectTemplate\VisualBasic\1033\MobileAppsApplication.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\MobileServicesApplication.vbproj </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileAppsApplication.vbproj </AdditionalArgs>
     </None>
-    <None Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\MobileServicesApplication.vbhtml.tt">
+    <None Include="ProjectTemplate\VisualBasic\1033\MobileAppsApplication.vbhtml.tt">
       <Generator>CustomTextTemplatingFilePreprocessor</Generator>
-      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\MobileServicesApplication.vbhtml.vstemplate </AdditionalArgs>
+      <AdditionalArgs> -a !!NugetVersion!$(NugetVersion) -a !!srcDirectory!$(MSBuildThisFileDirectory)..\src -out $(OutputPath)\ProjectTemplate\VisualBasic\1033\MobileAppsApplication.vbhtml.vstemplate </AdditionalArgs>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Web.config">
+    <Content Include="ProjectTemplate\CSharp\1033\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ItemTemplates\CSharp\1033\ApiController.cs.t4">
@@ -173,31 +173,31 @@
     <Content Include="ItemTemplates\VisualBasic\1033\Web.TableContext.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Web.Debug.config">
+    <None Include="ProjectTemplate\CSharp\1033\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ProjectTemplate\CSharp\1033\MobileServicesApplicationv1.0\Web.Release.config">
+    <None Include="ProjectTemplate\CSharp\1033\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\My Project\Settings.settings">
+    <Content Include="ProjectTemplate\VisualBasic\1033\My Project\Settings.settings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\Web.config">
+    <Content Include="ProjectTemplate\VisualBasic\1033\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\Web.Debug.config">
+    <None Include="ProjectTemplate\VisualBasic\1033\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\Web.Release.config">
+    <None Include="ProjectTemplate\VisualBasic\1033\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectTemplate\VisualBasic\1033\MobileServicesApplicationv1.0\My Project\Resources.resx">
+    <Content Include="ProjectTemplate\VisualBasic\1033\My Project\Resources.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
