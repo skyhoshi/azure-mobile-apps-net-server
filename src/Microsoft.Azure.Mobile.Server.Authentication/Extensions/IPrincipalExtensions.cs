@@ -101,11 +101,9 @@ namespace System.Security.Principal
         {
             if (tokenEntry.UserClaims != null)
             {
-                credentials.Claims = new Dictionary<string, string>();
                 Collection<Claim> userClaims = new Collection<Claim>();
                 foreach (ClaimSlim claim in tokenEntry.UserClaims)
                 {
-                    credentials.Claims[claim.Type] = claim.Value;
                     userClaims.Add(new Claim(claim.Type, claim.Value));
                 }
                 credentials.UserClaims = userClaims;

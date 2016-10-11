@@ -36,15 +36,6 @@ namespace Microsoft.Azure.Mobile.Server.Security
         }
 
         [Fact]
-        public void Claims_Roundtrip()
-        {
-            Dictionary<string, string> claims = new Dictionary<string, string>();
-            claims.Add("foo", "value1");
-            claims.Add("bar", "value2");
-            PropertyAssert.Roundtrips(this.creds, c => c.Claims, PropertySetter.NullRoundtrips, roundtripValue: claims);
-        }
-
-        [Fact]
         public void UserClaims_Roundtrip()
         {
             Collection<Claim> claims = new Collection<Claim>();

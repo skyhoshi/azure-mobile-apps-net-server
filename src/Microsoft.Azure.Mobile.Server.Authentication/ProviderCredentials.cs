@@ -47,15 +47,6 @@ namespace Microsoft.Azure.Mobile.Server.Authentication
         /// Gets or sets the collection of additional claims associated with this instance. May
         /// be null or empty.
         /// </summary>
-        /// <remarks>This property is obsolete. Use the UserClaims property instead.</remarks>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Setter is required for serialization."), JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        [Obsolete("Use the UserClaims property instead.", error: false)]
-        public IDictionary<string, string> Claims { get; set; }
-
-        /// <summary>
-        /// Gets or sets the collection of additional claims associated with this instance. May
-        /// be null or empty.
-        /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<Claim> UserClaims { get; set; }
     }

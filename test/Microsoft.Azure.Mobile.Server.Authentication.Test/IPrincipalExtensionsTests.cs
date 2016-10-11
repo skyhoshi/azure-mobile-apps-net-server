@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Mobile.Server.Security
 
             Assert.Equal("TestAccessToken", credentials.AccessToken);
             Assert.Equal(UserIdClaimValue, credentials.UserId);
-            Assert.Equal(claims.Count, credentials.Claims.Count);
             Assert.Equal(claims.Count, credentials.UserClaims.Count());
         }
 
@@ -107,7 +106,6 @@ namespace Microsoft.Azure.Mobile.Server.Security
             Assert.Equal("TestRefreshToken", credentials.RefreshToken);
             Assert.Equal(DateTimeOffset.Parse("2015-03-12T16:49:28.504Z"), credentials.AccessTokenExpiration);
             Assert.Equal(UserIdClaimValue, credentials.UserId);
-            Assert.Equal(claims.Count, credentials.Claims.Count);
             Assert.Equal(claims.Count, credentials.UserClaims.Count());
         }
 
@@ -137,7 +135,6 @@ namespace Microsoft.Azure.Mobile.Server.Security
             Assert.Equal("TestRefreshToken", credentials.RefreshToken);
             Assert.Equal(DateTimeOffset.Parse("2015-03-12T16:49:28.504Z"), credentials.AccessTokenExpiration);
             Assert.Equal(UserIdClaimValue, credentials.UserId);
-            Assert.Equal(claims.Count, credentials.Claims.Count);
             Assert.Equal(claims.Count, credentials.UserClaims.Count());
         }
 
@@ -167,12 +164,9 @@ namespace Microsoft.Azure.Mobile.Server.Security
 
             // For AAD, the id_token value needs to get copied to AccessToken, not the access_token value.
             Assert.Equal("TestIdToken", credentials.AccessToken);
-            Assert.Equal("TestTenantId", credentials.Claims.GetValueOrDefault(TenantIdClaimType));
-            Assert.Equal("TestObjectId", credentials.Claims.GetValueOrDefault(ObjectIdentifierClaimType));
             Assert.Equal("TestTenantId", credentials.UserClaims.Single(c => string.Equals(c.Type, TenantIdClaimType, StringComparison.Ordinal)).Value);
             Assert.Equal("TestObjectId", credentials.UserClaims.Single(c => string.Equals(c.Type, ObjectIdentifierClaimType, StringComparison.Ordinal)).Value);
             Assert.Equal(UserIdClaimValue, credentials.UserId);
-            Assert.Equal(claims.Count, credentials.Claims.Count);
             Assert.Equal(claims.Count, credentials.UserClaims.Count());
         }
 
@@ -196,7 +190,6 @@ namespace Microsoft.Azure.Mobile.Server.Security
 
             Assert.Equal("TestAccessToken", credentials.AccessToken);
             Assert.Equal("TestAccessTokenSecret", credentials.AccessTokenSecret);
-            Assert.Equal(claims.Count, credentials.Claims.Count);
             Assert.Equal(claims.Count, credentials.UserClaims.Count());
         }
 
@@ -258,11 +251,6 @@ namespace Microsoft.Azure.Mobile.Server.Security
             Assert.Equal(tokenEntry.UserId, creds.UserId);
             Assert.Equal(tokenEntry.AccessToken, creds.AccessToken);
             Assert.Equal("Facebook", creds.Provider);
-
-            // Verify Claims
-            Assert.Equal(2, creds.Claims.Count());
-            Assert.Equal("11111111", creds.Claims[ClaimTypes.NameIdentifier]);
-            Assert.Equal("group 2", creds.Claims["groups"]); // this is overwritten
 
             // Verify UserClaims
             Assert.Equal(3, creds.UserClaims.Count());
