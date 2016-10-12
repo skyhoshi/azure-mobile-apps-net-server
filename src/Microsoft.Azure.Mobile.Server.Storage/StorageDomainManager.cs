@@ -752,6 +752,7 @@ namespace Microsoft.Azure.Mobile.Server
             };
         }
 
+        [SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider")]
         private static bool AppendQueryParameter(StringBuilder builder, string name, string value, bool first)
         {
             if (!String.IsNullOrEmpty(value))
