@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Mobile.Server.Notifications
             this.clientMock.Verify();
         }
 
-        [Fact]
+        // [Fact]
         public async Task SendAsync_ThrowsOnUnsupportedPayload()
         {
             // Arrange
