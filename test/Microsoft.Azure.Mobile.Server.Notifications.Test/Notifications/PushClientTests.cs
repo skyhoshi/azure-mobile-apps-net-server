@@ -3,7 +3,6 @@
 // ----------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Mobile.Server.Notifications
             this.clientMock.Verify();
         }
 
-        // [Fact]
+        [Fact]
         public async Task SendAsync_ThrowsOnUnsupportedPayload()
         {
             // Arrange
@@ -153,7 +152,7 @@ namespace Microsoft.Azure.Mobile.Server.Notifications
             InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => this.client.SendAsync(messageMock.Object));
 
             // Assert
-            Assert.Contains("The 'Castle.Proxies.IPushMessageProxy' class is not a supported notification payload.", ex.Message);
+            Assert.Contains("The 'Castle.Proxies.ObjectProxy_1' class is not a supported notification payload. Supported payloads are: WindowsPushMessage, MpnsPushMessage, ApplePushMessage, GooglePushMessage, TemplatePushMessage.", ex.Message);
         }
 
         [Theory]
