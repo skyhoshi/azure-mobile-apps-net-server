@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Mobile.Server.Swagger
                     operation.security = new List<IDictionary<string, IEnumerable<string>>>();
                 }
 
-                var OAuthRequirements = new Dictionary<string, IEnumerable<string>>
+                var requirements = new Dictionary<string, IEnumerable<string>>
                 {
                     { this.provider, new string[] { } }
                 };
 
-                operation.security.Add(OAuthRequirements);
+                operation.security.Add(requirements);
             }
         }
     }
