@@ -752,12 +752,11 @@ namespace Microsoft.Azure.Mobile.Server
             };
         }
 
-        [SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider", Justification = "blach")]
         private static bool AppendQueryParameter(StringBuilder builder, string name, string value, bool first)
         {
             if (!String.IsNullOrEmpty(value))
             {
-                builder.AppendFormat("{0}{1}={2}", first ? string.Empty : QuerySeparator, name, value);
+                builder.AppendFormat(CultureInfo.InvariantCulture, "{0}{1}={2}", first ? string.Empty : QuerySeparator, name, value);
                 first = false;
             }
 
