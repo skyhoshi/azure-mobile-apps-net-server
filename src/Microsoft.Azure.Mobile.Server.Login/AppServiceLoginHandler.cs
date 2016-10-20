@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Mobile.Server.Login
             // we allow for no expiry (if lifetime is null)
             DateTime? expiry = (lifetime != null) ? created + lifetime : null;
 
-            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 AppliesToAddress = audience,
                 TokenIssuerName = issuer,
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Mobile.Server.Login
                 Subject = new ClaimsIdentity(claims),
             };
 
-            JwtSecurityTokenHandler securityTokenHandler = new JwtSecurityTokenHandler();
+            var securityTokenHandler = new JwtSecurityTokenHandler() { SetDefaultTimesOnTokenCreation = false };            
             return securityTokenHandler.CreateToken(tokenDescriptor) as JwtSecurityToken;
         }
     }
