@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
             var swagger = await swaggerResponse.Content.ReadAsAsync<JObject>();
 
             // Assert
-            ValidateSecurity(swagger, "/api/Anonymous", "get", false);
-            ValidateSecurity(swagger, "/api/Anonymous", "post", false);
-            ValidateSecurity(swagger, "/api/Authenticated", "get", true);
-            ValidateSecurity(swagger, "/api/Authenticated", "post", true);
-            ValidateSecurity(swagger, "/api/MixedAuth", "get", false);
-            ValidateSecurity(swagger, "/api/MixedAuth", "post", true);
+            this.ValidateSecurity(swagger, "/api/Anonymous", "get", false);
+            this.ValidateSecurity(swagger, "/api/Anonymous", "post", false);
+            this.ValidateSecurity(swagger, "/api/Authenticated", "get", true);
+            this.ValidateSecurity(swagger, "/api/Authenticated", "post", true);
+            this.ValidateSecurity(swagger, "/api/MixedAuth", "get", false);
+            this.ValidateSecurity(swagger, "/api/MixedAuth", "post", true);
         }
 
         private void ValidateSecurity(JObject swagger, string route, string action, bool expectSecurity)
