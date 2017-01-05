@@ -16,6 +16,6 @@
     <tags>microsoft azure mobile server authentication appservice windowsazureofficial aspnet webapi aspnetwebapi owin app service api apps login custom auth</tags>
   </metadata>
   <files>
-    <file src="**\Microsoft.Azure.Mobile.Server.Login.resources.dll" target="lib\net45" />
+    <file src="**\Microsoft.Azure.Mobile.Server.Login.resources.dll" target="lib\net46" />
   </files>
 </package>

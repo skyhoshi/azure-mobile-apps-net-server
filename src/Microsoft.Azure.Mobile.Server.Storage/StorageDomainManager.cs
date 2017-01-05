@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Mobile.Server
         {
             if (!String.IsNullOrEmpty(value))
             {
-                builder.AppendFormat("{0}{1}={2}", first ? string.Empty : QuerySeparator, name, value);
+                builder.AppendFormat(CultureInfo.InvariantCulture, "{0}{1}={2}", first ? string.Empty : QuerySeparator, name, value);
                 first = false;
             }
 

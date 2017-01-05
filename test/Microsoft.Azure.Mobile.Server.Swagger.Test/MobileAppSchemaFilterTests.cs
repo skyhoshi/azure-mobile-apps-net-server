@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
             {
                 properties = new Dictionary<string, Schema>()
                 {
-                    {"ReadWrite", new Schema() },
-                    {"ReadOnly", new Schema() }
+                    { "ReadWrite", new Schema() },
+                    { "ReadOnly", new Schema() }
                 }
             };
 

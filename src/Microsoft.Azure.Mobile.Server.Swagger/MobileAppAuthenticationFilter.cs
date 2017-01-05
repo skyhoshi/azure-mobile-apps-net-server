@@ -42,14 +42,16 @@ namespace Microsoft.Azure.Mobile.Server.Swagger
             if (authorized.Any())
             {
                 if (operation.security == null)
+                {
                     operation.security = new List<IDictionary<string, IEnumerable<string>>>();
+                }
 
-                var oAuthRequirements = new Dictionary<string, IEnumerable<string>>
+                var requirements = new Dictionary<string, IEnumerable<string>>
                 {
                     { this.provider, new string[] { } }
                 };
 
-                operation.security.Add(oAuthRequirements);
+                operation.security.Add(requirements);
             }
         }
     }
