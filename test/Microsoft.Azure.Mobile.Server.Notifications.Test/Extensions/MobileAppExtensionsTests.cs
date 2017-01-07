@@ -43,12 +43,13 @@ namespace Microsoft.Azure.Mobile.Server.Notifications.Test.Extensions
                     .Returns(Task.FromResult(0));
 
                 config.SetPushClient(pushClientMock.Object);
-
+#pragma warning disable 618
+                // Suppressing Obsolete warning on AddPushNotifications
                 new MobileAppConfiguration()
                     .MapApiControllers()
                     .AddPushNotifications()
                     .ApplyTo(config);
-
+#pragma warning restore 618
                 app.UseWebApi(config);
             });
 
