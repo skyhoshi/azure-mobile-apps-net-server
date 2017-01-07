@@ -5,6 +5,7 @@
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.Owin.Testing;
 using Newtonsoft.Json.Linq;
 using Swashbuckle.Application;
@@ -18,7 +19,8 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
         public async Task AppServiceAuthentication_AddsSecurityDefinition()
         {
             // Arrange
-            TestServer server = SwashbuckleHelper.CreateSwaggerServer(c =>
+            HttpConfiguration config = new HttpConfiguration();
+            TestServer server = SwashbuckleHelper.CreateSwaggerServer(config, c =>
             {
                 c.AppServiceAuthentication("http://mysite", "google");
             }, null);
@@ -33,14 +35,15 @@ namespace Microsoft.Azure.Mobile.Server.Swagger.Test
             Assert.Equal("OAuth2 Implicit Grant", googleDef["description"]);
             Assert.Equal("implicit", googleDef["flow"]);
             Assert.Equal("http://mysite/.auth/login/google", googleDef["authorizationUrl"]);
-            Assert.Equal("{}", googleDef["scopes"].ToString());
+            Assert.Equal(string.Empty, googleDef["scopes"]["google"].ToString());
         }
 
         [Fact]
         public async Task AppServiceAuthentication_AddsAuthToAuthenticatedControllers()
         {
             // Arrange
-            TestServer server = SwashbuckleHelper.CreateSwaggerServer(c =>
+            HttpConfiguration config = new HttpConfiguration();
+            TestServer server = SwashbuckleHelper.CreateSwaggerServer(config, c =>
             {
                 c.AppServiceAuthentication("http://mysite", "google");
             }, null);

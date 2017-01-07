@@ -45,7 +45,11 @@ namespace Swashbuckle.Application
             return config.OAuth2(authProvider)
                 .Description("OAuth2 Implicit Grant")
                 .Flow("implicit")
-                .AuthorizationUrl(loginUri.ToString());
+                .AuthorizationUrl(loginUri.ToString())
+                .Scopes(scopes =>
+                {
+                    scopes.Add(authProvider, string.Empty);
+                });
         }
     }
 }
