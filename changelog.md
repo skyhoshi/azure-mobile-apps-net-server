@@ -3,6 +3,15 @@ This is the changelog for the Azure Mobile **Apps** .NET server SDK, which are i
 Note: this applies only to the new Server SDK that's designed for App Service, **not Mobile Services**. Mobile Apps is only available in the new Azure portal.
 
 _____________
+**Release 2.0.0 (January 2017)**
+[https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/2.0.0](https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/2.0.0)
+
+- Fixed [Issue #164](https://github.com/Azure/azure-mobile-apps-net-server/issues/164): Support .NET Framework 4.6 as a base version
+
+- Fixed [Issue #173](https://github.com/Azure/azure-mobile-apps-net-server/issues/173): Remove the Push Registration Endpoint
+
+- Fixed [Issue #171](https://github.com/Azure/azure-mobile-apps-net-server/issues/171): Mobile Apps Swagger NuGet package not available
+
 **Release 1.1.157.1 (February 2016)**
 [https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/1.1.157.1](https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/1.1.157.1)
 
