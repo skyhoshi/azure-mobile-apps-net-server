@@ -48,12 +48,12 @@ namespace System.Security.Principal
 			return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, client);
 		}
 
-		public static Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken)
+		public static Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken) where T : ProviderCredentials, new()
 		{
 			return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, client);
 		}
 
-		public static async Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken, HttpClient httpClient)
+		public static async Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken, HttpClient httpClient) where T : ProviderCredentials, new()
 		{
 			ClaimsPrincipal user = principal as ClaimsPrincipal;
 			if (user == null)
