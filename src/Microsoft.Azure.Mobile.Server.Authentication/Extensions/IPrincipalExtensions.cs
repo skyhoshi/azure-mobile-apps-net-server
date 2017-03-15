@@ -36,58 +36,69 @@ namespace System.Security.Principal
             return principal.GetAppServiceIdentityAsync<T>(request, client);
         }
 
-        public static async Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, HttpRequestMessage request, HttpClient httpClient) where T : ProviderCredentials, new()
+        public static Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, HttpRequestMessage request, HttpClient httpClient) where T : ProviderCredentials, new()
         {
             if (request == null)
             {
                 throw new ArgumentNullException("request");
             }
 
-            ClaimsPrincipal user = principal as ClaimsPrincipal;
-            if (user == null)
-            {
-                throw new ArgumentOutOfRangeException(RResources.ParameterMustBeOfType.FormatInvariant("principal", typeof(ClaimsPrincipal).Name), (Exception)null);
-            }
-
             // Get the token from the request
             string zumoAuthToken = request.GetHeaderOrDefault("x-zumo-auth");
-            if (string.IsNullOrEmpty(zumoAuthToken))
-            {
-                return null;
-            }
+			return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, client);
+		}
 
-            // Base the url on the issuer of the JWT
-            Claim issuerClaim = user.FindFirst(JwtRegisteredClaimNames.Iss);
-            if (issuerClaim == null)
-            {
-                throw new ArgumentOutOfRangeException(RResources.GetIdentity_ClaimsMustHaveIssuer, (Exception)null);
-            }
+		public static Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken) where T : ProviderCredentials, new()
+		{
+			return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, client);
+		}
 
-            string issuerUrl = issuerClaim.Value;
-            ProviderCredentials credentials = (ProviderCredentials)new T();
-            TokenEntry tokenEntry = null;
-            AppServiceHttpClient appSvcClient = new AppServiceHttpClient(httpClient);
+		public static async Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken, HttpClient httpClient) where T : ProviderCredentials, new()
+		{
+			ClaimsPrincipal user = principal as ClaimsPrincipal;
+			if (user == null)
+			{
+				throw new ArgumentOutOfRangeException(RResources.ParameterMustBeOfType.FormatInvariant("principal", typeof(ClaimsPrincipal).Name), (Exception)null);
+			}
 
-            try
-            {
-                tokenEntry = await appSvcClient.GetRawTokenAsync(new Uri(issuerUrl), zumoAuthToken, credentials.Provider);
-            }
-            catch (HttpResponseException ex)
-            {
-                throw new InvalidOperationException(RResources.GetIdentity_HttpError.FormatInvariant(ex.Response.ToString()));
-            }
+			if (string.IsNullOrEmpty(zumoAuthToken))
+			{
+				return null;
+			}
 
-            if (!IsTokenValid(tokenEntry))
-            {
-                return null;
-            }
+			// Base the url on the issuer of the JWT
+			Claim issuerClaim = user.FindFirst(JwtRegisteredClaimNames.Iss);
+			if (issuerClaim == null)
+			{
+				throw new ArgumentOutOfRangeException(RResources.GetIdentity_ClaimsMustHaveIssuer, (Exception)null);
+			}
 
-            PopulateProviderCredentials(tokenEntry, credentials);
+			string issuerUrl = issuerClaim.Value;
+			ProviderCredentials credentials = (ProviderCredentials)new T();
+			TokenEntry tokenEntry = null;
+			AppServiceHttpClient appSvcClient = new AppServiceHttpClient(httpClient);
 
-            return (T)credentials;
-        }
+			try
+			{
+				tokenEntry = await appSvcClient.GetRawTokenAsync(new Uri(issuerUrl), zumoAuthToken, credentials.Provider);
+			}
+			catch (HttpResponseException ex)
+			{
+				throw new InvalidOperationException(RResources.GetIdentity_HttpError.FormatInvariant(ex.Response.ToString()));
+			}
 
-        internal static bool IsTokenValid(TokenEntry tokenEntry)
+			if (!IsTokenValid(tokenEntry))
+			{
+				return null;
+			}
+
+			PopulateProviderCredentials(tokenEntry, credentials);
+
+			return (T)credentials;
+		}
+
+
+		internal static bool IsTokenValid(TokenEntry tokenEntry)
         {
             if (tokenEntry == null)
             {
