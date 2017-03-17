@@ -35,7 +35,7 @@ To run the sample project:
 
 * Tutorials and product overview are available at [Microsoft Azure Mobile Services Developer Center](https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/).
 * See the [Mobile Apps .NET server SDK topic](https://azure.microsoft.com/documentation/articles/app-service-mobile-dotnet-backend-how-to-use-server-sdk/) for details on how to work with this SDK.
-* The [wiki for this repo](./wiki) is where we document issues and other interesting behaviors of the Mobile Apps .NET server SDK. 
+* The [wiki for this repo](https://github.com/Azure/azure-mobile-apps-net-server/wiki) is where we document issues and other interesting behaviors of the Mobile Apps .NET server SDK. 
 * Our product team actively monitors the [Mobile Services Developer Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azuremobile) and [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-mobile-app) to assist you with any troubles.
 
 ## Contribute Code or Provide Feedback
