@@ -117,6 +117,7 @@ ClientBin
 [Ss]tyle[Cc]op.*
 ~$*
 *.dbmdl
+.vs/*.sqlite
 Generated_Code #added for RIA/Silverlight projects
 *.orig
 

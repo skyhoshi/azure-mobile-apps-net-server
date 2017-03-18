@@ -45,60 +45,59 @@ namespace System.Security.Principal
 
             // Get the token from the request
             string zumoAuthToken = request.GetHeaderOrDefault("x-zumo-auth");
-			return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, client);
-		}
+            return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, httpClient);
+        }
 
-		public static Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken) where T : ProviderCredentials, new()
-		{
-			return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, client);
-		}
+        public static Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken) where T : ProviderCredentials, new()
+        {
+            return principal.GetAppServiceIdentityAsync<T>(zumoAuthToken, client);
+        }
 
-		public static async Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken, HttpClient httpClient) where T : ProviderCredentials, new()
-		{
-			ClaimsPrincipal user = principal as ClaimsPrincipal;
-			if (user == null)
-			{
-				throw new ArgumentOutOfRangeException(RResources.ParameterMustBeOfType.FormatInvariant("principal", typeof(ClaimsPrincipal).Name), (Exception)null);
-			}
+        public static async Task<T> GetAppServiceIdentityAsync<T>(this IPrincipal principal, string zumoAuthToken, HttpClient httpClient) where T : ProviderCredentials, new()
+        {
+            ClaimsPrincipal user = principal as ClaimsPrincipal;
+            if (user == null)
+            {
+                throw new ArgumentOutOfRangeException(RResources.ParameterMustBeOfType.FormatInvariant("principal", typeof(ClaimsPrincipal).Name), (Exception)null);
+            }
 
-			if (string.IsNullOrEmpty(zumoAuthToken))
-			{
-				return null;
-			}
+            if (string.IsNullOrEmpty(zumoAuthToken))
+            {
+                return null;
+            }
 
-			// Base the url on the issuer of the JWT
-			Claim issuerClaim = user.FindFirst(JwtRegisteredClaimNames.Iss);
-			if (issuerClaim == null)
-			{
-				throw new ArgumentOutOfRangeException(RResources.GetIdentity_ClaimsMustHaveIssuer, (Exception)null);
-			}
+            // Base the url on the issuer of the JWT
+            Claim issuerClaim = user.FindFirst(JwtRegisteredClaimNames.Iss);
+            if (issuerClaim == null)
+            {
+                throw new ArgumentOutOfRangeException(RResources.GetIdentity_ClaimsMustHaveIssuer, (Exception)null);
+            }
 
-			string issuerUrl = issuerClaim.Value;
-			ProviderCredentials credentials = (ProviderCredentials)new T();
-			TokenEntry tokenEntry = null;
-			AppServiceHttpClient appSvcClient = new AppServiceHttpClient(httpClient);
+            string issuerUrl = issuerClaim.Value;
+            ProviderCredentials credentials = (ProviderCredentials)new T();
+            TokenEntry tokenEntry = null;
+            AppServiceHttpClient appSvcClient = new AppServiceHttpClient(httpClient);
 
-			try
-			{
-				tokenEntry = await appSvcClient.GetRawTokenAsync(new Uri(issuerUrl), zumoAuthToken, credentials.Provider);
-			}
-			catch (HttpResponseException ex)
-			{
-				throw new InvalidOperationException(RResources.GetIdentity_HttpError.FormatInvariant(ex.Response.ToString()));
-			}
+            try
+            {
+                tokenEntry = await appSvcClient.GetRawTokenAsync(new Uri(issuerUrl), zumoAuthToken, credentials.Provider);
+            }
+            catch (HttpResponseException ex)
+            {
+                throw new InvalidOperationException(RResources.GetIdentity_HttpError.FormatInvariant(ex.Response.ToString()));
+            }
 
-			if (!IsTokenValid(tokenEntry))
-			{
-				return null;
-			}
+            if (!IsTokenValid(tokenEntry))
+            {
+                return null;
+            }
 
-			PopulateProviderCredentials(tokenEntry, credentials);
+            PopulateProviderCredentials(tokenEntry, credentials);
 
-			return (T)credentials;
-		}
+            return (T)credentials;
+        }
 
-
-		internal static bool IsTokenValid(TokenEntry tokenEntry)
+        internal static bool IsTokenValid(TokenEntry tokenEntry)
         {
             if (tokenEntry == null)
             {
