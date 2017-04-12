@@ -9,6 +9,20 @@ To get the source code and a sample backend via **git** just type:
     git clone https://github.com/Azure/azure-mobile-apps-net-server.git
     cd ./azure-mobile-apps-net-server/
 
+## Latest Builds
+Package | Build
+-------- | :------------:
+Microsoft.Azure.Mobile.Server | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/)
+Microsoft.Azure.Mobile.Server.Tables | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Tables.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/)
+Microsoft.Azure.Mobile.Server.Entity | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Entity.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/)
+Microsoft.Azure.Mobile.Server.Storage | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Storage.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Storage/)
+Microsoft.Azure.Mobile.Server.Authentication | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Authentication.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/)
+Microsoft.Azure.Mobile.Server.CrossDomain | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.CrossDomain.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/)
+Microsoft.Azure.Mobile.Server.Quickstart | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Quickstart.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/)
+Microsoft.Azure.Mobile.Server.Login | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Login.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/)
+Microsoft.Azure.Mobile.Server.Swagger | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Swagger.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Swagger/)
+Microsoft.Azure.Mobile.Server.Notifications | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Mobile.Server.Notifications.svg?style=plastic)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/)
+
 ## Building and Running Tests
 
 The solution must be built in Visual Studio 2013 or 2015.
@@ -35,7 +49,7 @@ To run the sample project:
 
 * Tutorials and product overview are available at [Microsoft Azure Mobile Services Developer Center](https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/).
 * See the [Mobile Apps .NET server SDK topic](https://azure.microsoft.com/documentation/articles/app-service-mobile-dotnet-backend-how-to-use-server-sdk/) for details on how to work with this SDK.
-* The [wiki for this repo](./wiki) is where we document issues and other interesting behaviors of the Mobile Apps .NET server SDK. 
+* The [wiki for this repo](https://github.com/Azure/azure-mobile-apps-net-server/wiki) is where we document issues and other interesting behaviors of the Mobile Apps .NET server SDK. 
 * Our product team actively monitors the [Mobile Services Developer Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azuremobile) and [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-mobile-app) to assist you with any troubles.
 
 ## Contribute Code or Provide Feedback

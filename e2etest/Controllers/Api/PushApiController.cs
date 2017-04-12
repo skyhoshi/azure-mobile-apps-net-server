@@ -85,7 +85,14 @@ namespace ZumoE2EServerApp.Controllers
                 {
                     GooglePushMessage message = new GooglePushMessage();
                     message.JsonPayload = payloadString;
-                    var result = await this.pushClient.SendAsync(message);
+                    if (tag != null)
+                    {
+                        await this.pushClient.SendAsync(message, tag);
+                    }
+                    else
+                    {
+                        await this.pushClient.SendAsync(message);
+                    }
                 }
                 else if (type == "apns")
                 {
@@ -189,7 +196,7 @@ namespace ZumoE2EServerApp.Controllers
                     {
                         Installation nhInstallation = await this.GetNhClient().GetInstallationAsync(installationId);
                     }
-                    catch (MessagingEntityNotFoundException)
+                    catch (Exception)
                     {
                         return true;
                     }
