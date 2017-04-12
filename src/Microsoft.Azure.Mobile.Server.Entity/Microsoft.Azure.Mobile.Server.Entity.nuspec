@@ -5,7 +5,7 @@
     <version>$version$$prerelease$</version>
     <title>Azure Mobile .NET Server Entity</title>
     <authors>Microsoft</authors>
-    <owners>Microsoft azure-sdk</owners>
+    <owners>Microsoft mobile-center</owners>
     <licenseUrl>http://go.microsoft.com/fwlink/?LinkID=331327</licenseUrl>
     <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
     <projectUrl>https://github.com/azure/azure-mobile-apps-net-server</projectUrl>
