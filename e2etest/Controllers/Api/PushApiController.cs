@@ -15,11 +15,9 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Tracing;
 using Microsoft.Azure.Mobile.Server;
-using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;
 using Microsoft.Azure.Mobile.Server.Notifications;
 using Microsoft.Azure.NotificationHubs;
-using Microsoft.Azure.NotificationHubs.Messaging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -99,7 +97,14 @@ namespace ZumoE2EServerApp.Controllers
                     ApplePushMessage message = new ApplePushMessage();
                     this.traceWriter.Info(payloadString.ToString());
                     message.JsonPayload = payloadString.ToString();
-                    var result = await this.pushClient.SendAsync(message);
+                    if (tag != null)
+                    {
+                        await this.pushClient.SendAsync(message, tag);
+                    }
+                    else
+                    {
+                        await this.pushClient.SendAsync(message);
+                    }
                 }
                 else if (type == "wns")
                 {
