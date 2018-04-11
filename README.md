@@ -45,6 +45,10 @@ To run the sample project:
 * A welcome page should be displayed, indicating the service is running.
 * You can now issue requests (such as GET or POST) to the backend from your browser.
 
+## Future of Azure Mobile Apps
+ 
+Microsoft is committed to fully supporting Azure Mobile Apps, including **support for the latest OS release, bug fixes, documentation improvements, and community PR reviews**. Please note that the product team is **not currently investing in any new feature work** for Azure Mobile Apps. We highly appreciate community contributions to all areas of Azure Mobile Apps. 
+
 ## Useful Resources
 
 * Tutorials and product overview are available at [Microsoft Azure Mobile Services Developer Center](https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/).
