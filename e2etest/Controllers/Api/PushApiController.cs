@@ -260,6 +260,11 @@ namespace ZumoE2EServerApp.Controllers
         private async Task<bool> VerifyTags(string channelUri, string installationId, NotificationHubClient nhClient)
         {
             IPrincipal user = this.User;
+            int expectedTagsCount = 1;
+            if (user.Identity != null && user.Identity.IsAuthenticated)
+            {
+                expectedTagsCount = 2;
+            }
 
             string continuationToken = null;
             do
@@ -269,7 +274,7 @@ namespace ZumoE2EServerApp.Controllers
                 foreach (RegistrationDescription reg in regsForChannel)
                 {
                     RegistrationDescription registration = await nhClient.GetRegistrationAsync<RegistrationDescription>(reg.RegistrationId);
-                    if (registration.Tags == null || registration.Tags.Count() == 0)
+                    if (registration.Tags == null || registration.Tags.Count() < expectedTagsCount)
                     {
                         return false;
                     }
