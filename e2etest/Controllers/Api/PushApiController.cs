@@ -236,7 +236,7 @@ namespace ZumoE2EServerApp.Controllers
             {
                 Content = new StringContent(JsonConvert.SerializeObject(new
                 {
-                    result = true,
+                    result = false,
                     error = "Can't delete Registrations For Channel"
                 }))
             };
