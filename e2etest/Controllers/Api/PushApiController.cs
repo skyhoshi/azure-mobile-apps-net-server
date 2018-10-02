@@ -44,7 +44,7 @@ namespace ZumoE2EServerApp.Controllers
 
             if (method == null)
             {
-                return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
 
             if (method == "send")
@@ -56,7 +56,7 @@ namespace ZumoE2EServerApp.Controllers
 
                 if (data["payload"] == null || token == null)
                 {
-                    return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
+                    return new HttpResponseMessage(HttpStatusCode.BadRequest);
                 }
 
                 // Payload could be a string or a dictionary
@@ -124,10 +124,10 @@ namespace ZumoE2EServerApp.Controllers
             }
             else
             {
-                return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
 
-            return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Route("api/verifyRegisterInstallationResult")]
@@ -219,13 +219,27 @@ namespace ZumoE2EServerApp.Controllers
         }
 
         [Route("api/deleteRegistrationsForChannel")]
-        public async Task DeleteRegistrationsForChannel(string channelUri)
+        public async Task<HttpResponseMessage> DeleteRegistrationsForChannel(string channelUri)
         {
-            await Retry(async () =>
+            var result = await Retry(async () =>
             {
                 await this.GetNhClient().DeleteRegistrationsByChannelAsync(channelUri);
                 return true;
             });
+
+            if (result)
+            {
+                return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(new { result = true })) };
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(new
+                {
+                    result = true,
+                    error = "Can't delete Registrations For Channel"
+                }))
+            };
         }
 
         [Route("api/register")]
@@ -246,11 +260,7 @@ namespace ZumoE2EServerApp.Controllers
         private async Task<bool> VerifyTags(string channelUri, string installationId, NotificationHubClient nhClient)
         {
             IPrincipal user = this.User;
-            int expectedTagsCount = 1;
-            if (user.Identity != null && user.Identity.IsAuthenticated)
-            {
-                expectedTagsCount = 2;
-            }
+
             string continuationToken = null;
             do
             {
@@ -259,7 +269,7 @@ namespace ZumoE2EServerApp.Controllers
                 foreach (RegistrationDescription reg in regsForChannel)
                 {
                     RegistrationDescription registration = await nhClient.GetRegistrationAsync<RegistrationDescription>(reg.RegistrationId);
-                    if (registration.Tags == null || registration.Tags.Count() != expectedTagsCount)
+                    if (registration.Tags == null || registration.Tags.Count() == 0)
                     {
                         return false;
                     }
@@ -272,7 +282,7 @@ namespace ZumoE2EServerApp.Controllers
                     Claim userIdClaim = identity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
                     string userId = (userIdClaim != null) ? userIdClaim.Value : string.Empty;
 
-                    if (expectedTagsCount > 1 && !registration.Tags.Contains("_UserId:" + userId))
+                    if (user.Identity != null && user.Identity.IsAuthenticated && !registration.Tags.Contains("_UserId:" + userId))
                     {
                         return false;
                     }
