@@ -3,6 +3,15 @@ This is the changelog for the Azure Mobile **Apps** .NET server SDK, which are i
 Note: this applies only to the new Server SDK that's designed for App Service, **not Mobile Services**. Mobile Apps is only available in the new Azure portal.
 
 _____________
+
+**Release 2.0.1**
+
+- [#205](https://github.com/Azure/azure-mobile-apps-net-server/pull/205): Check `System.IdentityModel.Tokens.Jwt` dependency version is higher than 4.0.3 and lower than 5.0.0.
+
+- [#245](https://github.com/Azure/azure-mobile-apps-net-server/pull/245): Update out-of-date JQuery used in the landing page.
+
+- [#190](https://github.com/Azure/azure-mobile-apps-net-server/pull/190): Add overload for GetIdentitiesAsync that only requires the X-ZUMO-AUTH token value.
+
 **Release 2.0.0 (January 2017)**
 [https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/2.0.0](https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/2.0.0)
 
