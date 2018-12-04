@@ -4,7 +4,7 @@ Note: this applies only to the new Server SDK that's designed for App Service, *
 
 _____________
 
-**Release 2.0.1**
+**Release 2.0.1 (December 2018)**
 
 - [#190](https://github.com/Azure/azure-mobile-apps-net-server/pull/190): Add overload for GetIdentitiesAsync that only requires the X-ZUMO-AUTH token value.
 
