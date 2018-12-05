@@ -17,6 +17,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
+        <_ProgramFiles>$([System.Environment]::GetEnvironmentVariable('ProgramFiles(x86)'))</_ProgramFiles>
         <TextTransformPath Condition="'$(TextTransformPath)' == ''">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\10.0\TextTransform.exe</TextTransformPath>
         <!-- Initial default value -->
         <_TransformExe>$(TextTransformPath)</_TransformExe>
@@ -29,6 +30,7 @@
         <!-- Future proof 'til VS2013+2 -->
         <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\13.0\TextTransform.exe</_TransformExe>
         <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\14.0\TextTransform.exe</_TransformExe>
+        <_TransformExe Condition="!Exists('$(_TransformExe)')">$(ProgramFiles)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\TextTransform.exe</_TransformExe>
     </PropertyGroup>
 
     <Target Name="TransformOnBuild" AfterTargets="AfterBuild">
