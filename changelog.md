@@ -12,6 +12,8 @@ _____________
 
 - [#245](https://github.com/Azure/azure-mobile-apps-net-server/pull/245): Update out-of-date JQuery used in the landing page.
 
+- [#259](https://github.com/Azure/azure-mobile-apps-net-server/pull/259): Update 'Microsoft.Data.OData' dependency to v5.8.4.
+
 **Release 2.0.0 (January 2017)**
 [https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/2.0.0](https://github.com/Azure/azure-mobile-apps-net-server/releases/tag/2.0.0)
 
