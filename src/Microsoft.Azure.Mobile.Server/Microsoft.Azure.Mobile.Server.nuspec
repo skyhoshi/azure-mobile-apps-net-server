@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>This is the Azure Mobile Apps .NET Server package, the core package for the server SDK. To learn more about Azure Mobile, go to http://azure.microsoft.com/mobile.</description>
     <releaseNotes></releaseNotes>
-    <copyright>&#169; Microsoft Corporation. All rights reserved</copyright>
+    <copyright>&#169; Microsoft Corporation. All rights reserved.</copyright>
     <tags>microsoft azure mobile server windowsazureofficial aspnet webapi aspnetwebapi owin app service api apps</tags>
   </metadata>
   <files>
