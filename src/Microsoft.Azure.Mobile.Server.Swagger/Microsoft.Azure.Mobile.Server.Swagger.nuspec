@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>This package contains classes for enabling Swagger definitions and UI to the Azure Mobile Apps .NET Server SDK. For more information, check out http://azure.microsoft.com/mobile.</description>
     <releaseNotes></releaseNotes>
-    <copyright>&#169; Microsoft Corporation. All rights reserved</copyright>
+    <copyright>&#169; Microsoft Corporation. All rights reserved.</copyright>
     <tags>microsoft azure mobile server tables windowsazureofficial aspnet webapi aspnetwebapi owin app service api apps table</tags>
   </metadata>
   <files>

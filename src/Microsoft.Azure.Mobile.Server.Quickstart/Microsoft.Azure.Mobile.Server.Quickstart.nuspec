@@ -15,7 +15,7 @@
       Breaking Changes
         Version 2.0.0 : UseDefaultConfiguration() does not enable Push registration endpoint
     </releaseNotes>
-    <copyright>&#169; Microsoft Corporation. All rights reserved</copyright>
+    <copyright>&#169; Microsoft Corporation. All rights reserved.</copyright>
     <tags>microsoft azure mobile server appservice windowsazureofficial aspnet webapi aspnetwebapi owin app service api apps</tags>    
   </metadata>
   <files>

@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>This package is part of the Azure Mobile .NET Server SDK and contains features for integrating with Azure Table Storage. To learn more about Azure Mobile, go to http://azure.microsoft.com/mobile.</description>
     <releaseNotes></releaseNotes>
-    <copyright>&#169; Microsoft Corporation. All rights reserved</copyright>
+    <copyright>&#169; Microsoft Corporation. All rights reserved.</copyright>
     <tags>microsoft azure mobile server storage windowsazureofficial aspnet webapi aspnetwebapi owin app service api apps table</tags>    
   </metadata>
   <files>
