@@ -6,7 +6,7 @@ _____________
 
 **Release 2.0.2 (December 2018)**
 
-- [#260](https://github.com/Azure/azure-mobile-apps-net-server/pull/262): Update SDKs to v2.0.2 to fix a strong name issue with v2.0.1 Nugets.
+- [#262](https://github.com/Azure/azure-mobile-apps-net-server/pull/262): Update SDKs to v2.0.2 to fix a strong name issue with v2.0.1 Nugets.
 
 **Release 2.0.1 (December 2018)**
 
