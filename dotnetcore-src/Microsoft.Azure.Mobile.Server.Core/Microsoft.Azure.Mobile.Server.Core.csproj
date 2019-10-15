@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\src\Common\AssemblyUtils.cs" Link="Common\AssemblyUtils.cs" />
+    <Compile Include="..\..\src\Common\CloneableExtensions.cs" Link="Common\CloneableExtensions.cs" />
+    <Compile Include="..\..\src\Common\DictionaryExtensions.cs" Link="Common\DictionaryExtensions.cs" />
+    <Compile Include="..\..\src\Common\EnumHelperOfTEnum.cs" Link="Common\EnumHelperOfTEnum.cs" />
+    <Compile Include="..\..\src\Common\HttpHeaderUtils.cs" Link="Common\HttpHeaderUtils.cs" />
+    <Compile Include="..\..\src\Common\ServiceLogCategories.cs" Link="Common\ServiceLogCategories.cs" />
+    <Compile Include="..\..\src\Common\ServiceSettingsDictionaryExtensions.cs" Link="Common\ServiceSettingsDictionaryExtensions.cs" />
+    <Compile Include="..\..\src\Common\StringExtensions.cs" Link="Common\StringExtensions.cs" />
+    <Compile Include="..\..\src\Common\StringUtils.cs" Link="Common\StringUtils.cs" />
+    <Compile Include="..\..\src\Common\TypeUtils.cs" Link="Common\TypeUtils.cs" />
+    <Compile Include="..\..\src\Common\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+    <Compile Include="..\..\src\Common\CommonResources.Designer.cs" Link="Properties\CommonResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Cache\CacheOptions.cs" Link="Cache\CacheOptions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Cache\CacheOptionsHelper.cs" Link="Cache\CacheOptionsHelper.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Cache\CachePolicy.cs" Link="Cache\CachePolicy.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Cache\CachePolicyProvider.cs" Link="Cache\CachePolicyProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Cache\ICachePolicyProvider.cs" Link="Cache\ICachePolicyProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\AppConfiguration.cs" Link="Config\AppConfiguration.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\IMobileAppControllerConfigProvider.cs" Link="Config\IMobileAppControllerConfigProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\IMobileAppExtensionConfigProvider.cs" Link="Config\IMobileAppExtensionConfigProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\MobileAppControllerAttribute.cs" Link="Config\MobileAppControllerAttribute.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\MobileAppConfiguration.cs" Link="Config\MobileAppConfiguration.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\MobileAppControllerConfigProvider.cs" Link="Config\MobileAppControllerConfigProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Content\StaticHtmlActionResult.cs" Link="Content\StaticHtmlActionResult.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\IAppConfiguration.cs" Link="Config\IAppConfiguration.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\LogCategories.cs" Link="LogCategories.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\RouteNames.cs" Link="Config\RouteNames.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\MobileAppSettingsKeys.cs" Link="Config\MobileAppSettingsKeys.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\MobileAppSettingsProvider.cs" Link="Config\MobileAppSettingsProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\IMobileAppSettingsProvider.cs" Link="Config\IMobileAppSettingsProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Extensions\HttpConfigurationExtensions.cs" Link="Extensions\HttpConfigurationExtensions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Config\SetRouteConstraint.cs" Link="Config\SetRouteConstraint.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Extensions\HttpRequestMessageExtensions.cs" Link="Extensions\HttpRequestMessageExtensions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Extensions\TraceWriterExtensions.cs" Link="Extensions\TraceWriterExtensions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Serialization\ServiceContractResolver.cs" Link="Serialization\ServiceContractResolver.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\MobileAppSettingsDictionary.cs" Link="MobileAppSettingsDictionary.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\ConnectionSettings.cs" Link="ConnectionSettings.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Properties\RResources.Designer.cs" Link="Properties\RResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RResources.resx</DependentUpon>
+    </Compile>
+    <!--<Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Common\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs"/>
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server\Common\CommonResources.Designer.cs" Link="Properties\CommonResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonResources.resx</DependentUpon>
+    </Compile>-->
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\src\Common\CommonResources.resx" Link="Properties\CommonResources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.3" />
+  </ItemGroup>
+</Project>
