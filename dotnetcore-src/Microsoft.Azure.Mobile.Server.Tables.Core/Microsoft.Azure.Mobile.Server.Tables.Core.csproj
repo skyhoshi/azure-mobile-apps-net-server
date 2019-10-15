@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\CompositeTableKey.cs" Link="CompositeTableKey.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Config\MapTableControllersExtensionConfigProvider.cs" Link="Config\MapTableControllersExtensionConfigProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Config\MobileAppTableConfiguration.cs" Link="Config\MobileAppTableConfiguration.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Config\TableMobileAppConfigProvider.cs" Link="Config\TableMobileAppConfigProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Config\TableMobileAppExtensionConfig.cs" Link="Config\TableMobileAppExtensionConfig.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Extensions\TableHttpConfigurationExtensions.cs" Link="Extensions\TableHttpConfigurationExtensions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Extensions\TableHttpRequestMessageExtensions.cs" Link="Extensions\TableHttpRequestMessageExtensions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Extensions\TableMobileAppOptionsExtensions.cs" Link="Extensions\TableMobileAppOptionsExtensions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Extensions\TableTypeExtensions.cs" Link="Extensions\TableTypeExtensions.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Headers\LinkHeader.cs" Link="Headers\LinkHeader.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Internal\ConcurrentHashset.cs" Link="Internal\ConcurrentHashset.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Serialization\TableContractResolver.cs" Link="Serialization\TableContractResolver.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\TableController.cs" Link="TableController.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\TableControllerOfData.cs" Link="TableControllerOfData.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\DomainManager.cs" Link="Tables\DomainManager.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\IDomainManager.cs" Link="Tables\IDomainManager.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\ITableControllerConfigProvider.cs" Link="Tables\ITableControllerConfigProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\ITableData.cs" Link="Tables\ITableData.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\QueryResult.cs" Link="Tables\QueryResult.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\TableColumnAttribute.cs" Link="Tables\TableColumnAttribute.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\TableColumnType.cs" Link="Tables\TableColumnType.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\TableControllerConfigAttribute.cs" Link="Tables\TableControllerConfigAttribute.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\TableControllerConfigProvider.cs" Link="Tables\TableControllerConfigProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\TableFilterProvider.cs" Link="Tables\TableFilterProvider.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\TableQueryFilter.cs" Link="Tables\TableQueryFilter.cs" />
+    <Compile Include="..\..\src\Microsoft.Azure.Mobile.Server.Tables\Tables\TableUtils.cs" Link="Tables\TableUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Headers\" />
+    <Folder Include="Internal\" />
+    <Folder Include="Serialization\" />
+    <Folder Include="Tables\" />
+  </ItemGroup>
+
+</Project>
